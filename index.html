@@ -341,27 +341,40 @@ function initHotbar() {
 function updateHotbar() {
   const keys = Object.keys(inventory);
   const slots = hotbar.querySelectorAll(".slot");
+
   for (let i = 0; i < HOTBAR_SLOTS; i++) {
     const slot = slots[i];
     const type = keys[i];
     slot.innerHTML = "";
 
     if (type) {
-      // carré de couleur du bloc
-      const colorBox = document.createElement("div");
-      colorBox.style.width = "70%";
-      colorBox.style.height = "70%";
-      colorBox.style.borderRadius = "3px";
-      colorBox.style.background = colors[type];
-      colorBox.style.boxShadow = "0 0 3px rgba(0,0,0,0.5)";      slot.appendChild(colorBox);
+      const tex = textures[type];
 
-      // nombre d'items
+      if (tex && tex.complete && tex.naturalWidth > 0) {
+        // ✅ Affichage de la texture dans l'inventaire
+        const img = document.createElement("img");
+        img.src = tex.src;
+        img.style.width = "70%";
+        img.style.height = "70%";
+        img.style.imageRendering = "pixelated";
+        slot.appendChild(img);
+      } else {
+        // 🎨 Si pas de texture → couleur
+        const colorBox = document.createElement("div");
+        colorBox.style.width = "70%";
+        colorBox.style.height = "70%";
+        colorBox.style.borderRadius = "3px";
+        colorBox.style.background = colors[type];
+        slot.appendChild(colorBox);
+      }
+
+      // ➕ Afficher le nombre
       const count = document.createElement("div");
       count.className = "slot-count";
       count.textContent = Math.min(inventory[type], MAX_STACK);
       slot.appendChild(count);
 
-      // surbrillance si sélectionné
+      // 🌟 Sélection visuelle
       if (parseInt(type) === selectedType) slot.classList.add("selected");
       else slot.classList.remove("selected");
     } else {

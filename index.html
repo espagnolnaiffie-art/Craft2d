@@ -344,7 +344,7 @@ function updateHotbar() {
 
   for (let i = 0; i < HOTBAR_SLOTS; i++) {
     const slot = slots[i];
-    const type = keys[i];
+    const type = parseInt(keys[i]);
     slot.innerHTML = "";
 
     if (type) {

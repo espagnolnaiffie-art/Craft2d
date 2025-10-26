@@ -972,6 +972,20 @@ function loop() {
 initHotbar();   // créer les 9 slots (une seule fois)
 updateHotbar(); // affichage initial
 loop();         // démarrer la boucle principale
+  // 🔢 Bouton version
+const versionBtn = document.getElementById("versionBtn");
+const versionPopup = document.getElementById("versionPopup");
+const closeVersion = document.getElementById("closeVersion");
+
+versionBtn.onclick = () => {
+  paused = true;
+  versionPopup.style.display = "flex";
+};
+
+closeVersion.onclick = () => {
+  versionPopup.style.display = "none";
+  paused = false;
+};
 </script>
 </body>
 </html>

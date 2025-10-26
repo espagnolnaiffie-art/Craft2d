@@ -118,6 +118,44 @@ button,
   font-size: 2vw;
   color: white;
 }
+  #versionBtn {
+  position: fixed;
+  top: 75px; /* sous le bouton pause */
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  font-size: 22px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+}
+
+#versionPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  display: none; /* masqué par défaut */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#versionPopup button {
+  margin-top: 20px;
+  width: 180px;
+  height: 50px;
+  border-radius: 12px;
+  font-size: 18px;
+  background: #444;
+  color: white;
+      }
 </style>
 </head>
 <body>

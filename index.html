@@ -348,10 +348,9 @@ function updateHotbar() {
     slot.innerHTML = "";
 
     if (type) {
-      const tex = textures[type];
+      const tex = textures[parseInt(type)];
 
       if (tex && tex.complete && tex.naturalWidth > 0) {
-        // ✅ Affichage de la texture dans l'inventaire
         const img = document.createElement("img");
         img.src = tex.src;
         img.style.width = "70%";
@@ -359,7 +358,6 @@ function updateHotbar() {
         img.style.imageRendering = "pixelated";
         slot.appendChild(img);
       } else {
-        // 🎨 Si pas de texture → couleur
         const colorBox = document.createElement("div");
         colorBox.style.width = "70%";
         colorBox.style.height = "70%";
@@ -368,13 +366,11 @@ function updateHotbar() {
         slot.appendChild(colorBox);
       }
 
-      // ➕ Afficher le nombre
       const count = document.createElement("div");
       count.className = "slot-count";
       count.textContent = Math.min(inventory[type], MAX_STACK);
       slot.appendChild(count);
 
-      // 🌟 Sélection visuelle
       if (parseInt(type) === selectedType) slot.classList.add("selected");
       else slot.classList.remove("selected");
     } else {
